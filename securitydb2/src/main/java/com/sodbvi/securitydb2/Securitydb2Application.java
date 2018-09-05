@@ -1,0 +1,12 @@
+package com.sodbvi.securitydb2;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Securitydb2Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Securitydb2Application.class, args);
+	}
+}
