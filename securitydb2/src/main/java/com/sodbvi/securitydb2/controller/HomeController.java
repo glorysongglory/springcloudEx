@@ -1,6 +1,7 @@
 package com.sodbvi.securitydb2.controller;
 
 import com.sodbvi.securitydb2.domain.Msg;
+import com.sodbvi.securitydb2.handler.CusException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +26,10 @@ public class HomeController {
     @ResponseBody
     public String hello() {
         return "hello admin";
+    }
+
+    @RequestMapping("/json")
+    public String json() throws CusException{
+        throw new CusException("jsonTest");
     }
 }
