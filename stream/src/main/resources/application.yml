@@ -1,0 +1,57 @@
+server:
+  port: 80
+spring:
+  cloud:
+    stream:
+      defaultBinder: defaultRabbit
+      binders:
+        defaultRabbit:
+           type: rabbit
+           environment:
+             spring:
+               rabbitmq:
+                  host: 127.0.0.1
+                  port: 5672
+                  virtual-host: /
+                  username: test
+                  password: test
+      bindings:
+        output:
+           destination: streamTest
+           content-type: text/plain
+        input:
+           destination: streamTest
+           content-type: text/plain
+        cusoutput:
+           destination: streamCusTest
+           content-type: text/plain
+        cusinput:
+           destination: streamCusTest
+           content-type: text/plain
+        groupoutput:
+           destination: streamGroupTest
+           content-type: text/plain
+        groupinput:
+           destination: streamGroupTest
+           content-type: text/plain
+           group: streamgroup1
+        entityoutput:
+           destination: streamEntityTest
+        entityinput:
+           destination: streamEntityTest
+           group: streamgroup2
+        routingoutput:
+           destination: streamRoutingTest
+        routinginput:
+           destination: streamRoutingTest
+           group: streamgroup3
+      rabbit:
+        bindings:
+          routingoutput:
+            producer:
+              routing-key-expression: '''asdfa.basdfasfasdfasdfasdfasdfasdfasdf'''
+          routinginput:
+            consumer:
+              bindingRoutingKey: a.*
+
+
